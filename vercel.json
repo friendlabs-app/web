@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/privacy/zviratkov", "destination": "/privacy/hratkov/", "permanent": true },
+    { "source": "/privacy/zviratkov/", "destination": "/privacy/hratkov/", "permanent": true }
+  ]
+}
