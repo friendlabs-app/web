@@ -10,6 +10,8 @@ npm run check
 npm test
 npm run format:check
 npm run build
+npx playwright install chromium
+npm run test:browser
 npm run preview
 ```
 
@@ -41,6 +43,13 @@ sestavení a balíček pro nasazení. Při změně rozložení ověřit filtry, 
 stránky a tři kola ochutnávky na šířkách 320, 360, 390, 768, 1024 a 1440 px.
 Kontroly zahrnují polohu okolních sekcí a scrollu, klávesnici, zvětšené písmo
 a zobrazení všech dvanácti her bez JavaScriptu.
+
+Společná hlavička je v `src/components/SiteHeader.astro`. Její rozměry, písmo
+a navigace se definují pouze v této komponentě. Prohlížečové testy v
+`tests/browser/navigation.spec.ts` skutečně proklikají všech šest stránek
+a porovnají polohu i rozměry hlavičky, loga a každého odkazu na šesti šířkách
+ve světlém i tmavém režimu. CI je spouští po sestavení. `PLAYWRIGHT_BASE_URL`
+umožňuje stejnou kontrolu nad nasazeným webem.
 
 Cloudflare načítá bezpečnostní hlavičky z `public/_headers`. CSP povoluje
 skripty, styly, obrázky a písma pouze z vlastního webu; Astro proto sestavuje

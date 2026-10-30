@@ -1,4 +1,5 @@
 ---
+import SiteHeader from '../components/SiteHeader.astro';
 interface Props {
   title: string;
   description: string;
@@ -60,29 +61,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <a href="#main" class="skip-link">
       {lang === 'cs' ? 'Přejít na obsah' : 'Skip to content'}
     </a>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="Friendlabs — home">
-        <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
-          <circle cx="12" cy="16" r="10" fill="#4f6df5" />
-          <circle cx="21" cy="16" r="10" fill="#ff8a5c" fill-opacity="0.85" />
-        </svg>
-        Friendlabs
-      </a>
-      <nav aria-label={lang === 'cs' ? 'Hlavní navigace' : 'Main navigation'}>
-        <a href="/hratkov/" aria-current={Astro.url.pathname === '/hratkov/' ? 'page' : undefined}>
-          Hrátkov
-        </a>
-        <a href="/support/" aria-current={Astro.url.pathname === '/support/' ? 'page' : undefined}>
-          {lang === 'cs' ? 'Podpora' : 'Support'}
-        </a>
-        <a
-          href="/privacy/"
-          aria-current={Astro.url.pathname.startsWith('/privacy/') ? 'page' : undefined}
-        >
-          {lang === 'cs' ? 'Soukromí' : 'Privacy'}
-        </a>
-      </nav>
-    </header>
+    <SiteHeader lang={lang} />
     <main id="main" tabindex="-1" class:list={{ 'hratkov-main': hratkov }}>
       <slot />
     </main>

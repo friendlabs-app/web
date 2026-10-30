@@ -43,23 +43,6 @@
   font-weight: 800;
   letter-spacing: -0.035em;
 }
-.hratkov-site .site-header {
-  max-width: 1256px;
-  padding-top: 18px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #edf0f6;
-}
-.hratkov-site .site-header .brand {
-  font-family: system-ui, sans-serif;
-  font-size: 1.05rem;
-  letter-spacing: -0.04em;
-}
-.hratkov-site .site-header nav a {
-  font-size: 0.85rem;
-}
-.hratkov-site .site-header nav a[aria-current] {
-  color: var(--h-blue);
-}
 .hratkov-main {
   overflow-wrap: anywhere;
   max-width: 1256px;
@@ -894,9 +877,6 @@
   .hratkov-site {
     --h-nav-height: 108px;
   }
-  .hratkov-site .site-header {
-    padding: 16px 20px;
-  }
   .hratkov-main {
     overflow-wrap: anywhere;
     padding-left: 20px;
@@ -1066,12 +1046,6 @@
   }
 }
 @media (max-width: 380px) {
-  .hratkov-site .site-header nav {
-    gap: 8px 12px;
-  }
-  .hratkov-site .site-header nav a {
-    font-size: 0.78rem;
-  }
   .h-logo {
     font-size: 1.8rem;
   }

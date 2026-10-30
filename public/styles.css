@@ -54,61 +54,13 @@ body {
 
 h1,
 h2,
-h3,
-.brand {
+h3 {
   font-family:
     'Space Grotesk',
     'Inter',
     -apple-system,
     sans-serif;
   letter-spacing: -0.02em;
-}
-
-/* header */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 22px 24px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 1.25rem;
-  text-decoration: none;
-  color: var(--text);
-}
-
-.brand svg {
-  display: block;
-}
-.site-header nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 20px;
-}
-
-.site-header nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--muted);
-  transition: color 0.15s ease;
-}
-
-.site-header nav a:hover {
-  color: var(--text);
 }
 
 /* layout */

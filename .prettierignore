@@ -3,3 +3,5 @@ dist/
 .astro/
 .wrangler/
 package-lock.json
+test-results/
+playwright-report/
