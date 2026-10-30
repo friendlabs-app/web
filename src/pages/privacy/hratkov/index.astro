@@ -1,0 +1,14 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { privacy } from '../../../data/privacy';
+---
+<SiteLayout title="Hrátkov — Privacy policy / Zásady soukromí — Friendlabs" description="Hrátkov privacy: child settings stay on the device; optional subscriptions are verified with RevenueCat. English, Czech, and Slovak policies.">
+  <article class="page">
+    <h1>Hrátkov — Privacy / Soukromí / Súkromie</h1>
+    <nav class="policy-links" aria-label="Policy language"><a href="#en">English</a><a href="#cs">Česky</a><a href="#sk">Slovensky</a></nav>
+    {privacy.map((language) => <section id={language.id} lang={language.id} class="policy-language" aria-labelledby={`title-${language.id}`}><h2 id={`title-${language.id}`}>{language.title}</h2><p class="updated">{language.updated}</p><p class="policy-summary"><strong>{language.summary}</strong></p>{language.sections.map((section) => <section><h3>{section.heading}</h3>{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</section>)}</section>)}
+    <h2>Related policies / Související informace</h2>
+    <ul><li><a href="https://www.revenuecat.com/privacy">RevenueCat privacy policy</a></li><li><a href="https://www.revenuecat.com/dpa">RevenueCat Data Processing Addendum</a></li><li><a href="https://www.apple.com/legal/privacy/">Apple privacy policy</a></li><li><a href="https://policies.google.com/privacy">Google privacy policy</a></li><li><a href="/privacy/">Friendlabs website privacy</a></li></ul>
+    <p><a href="mailto:friendlabs.app@gmail.com">friendlabs.app@gmail.com</a> · <a href="/hratkov/">Hrátkov</a> · <a href="/support/">Support</a></p>
+  </article>
+</SiteLayout>
