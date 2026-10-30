@@ -1,119 +1,222 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
-import { games } from '../../data/games';
-
-const filters = [
-  { id: 'all', label: 'Všechny hry' },
-  { id: 'free', label: 'Zdarma' },
-  { id: 'animals', label: 'Zvířátka' },
-  { id: 'create', label: 'Tvoření' },
-  { id: 'dinos', label: 'Dinosauři' },
-];
+import GameCatalog from '../../components/hratkov/GameCatalog.astro';
+import GameDemo from '../../components/hratkov/GameDemo.astro';
+import PricingPlans from '../../components/hratkov/PricingPlans.astro';
 const faqs = [
-  ['Pro jak staré děti je Hrátkov?', 'Pro děti přibližně od 2 do 5 let. Podle zvoleného věku aplikace upraví počet možností, délku některých kol a složitost omalovánek. Na začátku doporučujeme hrát společně.'],
-  ['Co jde hrát zdarma?', 'Bez předplatného jsou dostupné Zvíře a mládě, Kde bydlím? a Omalovánky. Hrátkov Plus přidá zbývajících devět her.'],
-  ['Potřebujeme připojení k internetu?', 'Obrázky, zvuky, hlasy a písma jsou součástí aplikace. Předplatné ověřuje RevenueCat při spuštění a návratu do aplikace; nákup a obnovení potřebují internet. Dostupnost placených her offline se řídí dříve ověřeným oprávněním a jeho platností.'],
-  ['Může dítě něco koupit samo?', 'Vstup k nákupům je za rodičovskou bránou s podržením tlačítka. Samotnou platbu potvrzuje rodič prostřednictvím App Store nebo Google Play podle nastavení svého zařízení.'],
-  ['Jak se předplatné ruší?', 'Předplatné se spravuje v nastavení účtu App Store nebo Google Play. Odkaz najdete i v rodičovské sekci. Smazání aplikace ani volba Základ předplatné nezruší.'],
+  [
+    'Pro jak staré děti je Hrátkov?',
+    'Pro děti přibližně od 2 do 5 let. Podle zvoleného věku aplikace upraví počet možností, délku některých kol a složitost omalovánek. Na začátku doporučujeme hrát společně.',
+  ],
+  [
+    'Co jde hrát zdarma?',
+    'Bez předplatného jsou dostupné Zvíře a mládě, Kde bydlím? a Omalovánky. Hrátkov Plus přidá zbývajících devět her.',
+  ],
+  [
+    'Potřebujeme připojení k internetu?',
+    'Obrázky, zvuky, hlasy a písma jsou součástí aplikace. Předplatné ověřuje RevenueCat při spuštění a návratu do aplikace; nákup a obnovení potřebují internet. Dostupnost placených her offline se řídí dříve ověřeným oprávněním a jeho platností.',
+  ],
+  [
+    'Může dítě něco koupit samo?',
+    'Vstup k nákupům je za rodičovskou bránou s podržením tlačítka. Samotnou platbu potvrzuje rodič prostřednictvím App Store nebo Google Play podle nastavení svého zařízení.',
+  ],
+  [
+    'Jak se předplatné ruší?',
+    'Předplatné se spravuje v nastavení účtu App Store nebo Google Play. Odkaz najdete i v rodičovské sekci. Smazání aplikace ani volba Základ předplatné nezruší.',
+  ],
 ];
 ---
-<SiteLayout title="Hrátkov — malé hry, velké objevy | Friendlabs" description="12 her pro děti od 2 do 5 let. Zvířátka, dinosauři, kreslení a první počítání. Tři hry zdarma, bez reklam a časového tlaku." lang="cs" hratkov>
-  <div class="h-subnav"><a class="h-logo" href="/hratkov/">hrátkov<span aria-hidden="true">.</span></a><nav aria-label="Na této stránce"><a href="#hry">Naše hry</a><a href="#rodice">Pro rodiče</a><a href="#predplatne">Základ a Plus</a></nav><span class="h-age">pro děti 2–5 let</span></div>
+
+<SiteLayout
+  title="Hrátkov — malé hry, velké objevy | Friendlabs"
+  description="12 her pro děti od 2 do 5 let. Zvířátka, dinosauři, kreslení a první počítání. Tři hry zdarma, bez reklam a časového tlaku."
+  lang="cs"
+  hratkov
+>
+  <div class="h-subnav">
+    <a class="h-logo" href="/hratkov/">
+      hrátkov<span aria-hidden="true">.</span>
+    </a>
+    <nav aria-label="Na této stránce">
+      <a href="#hry">Naše hry</a>
+      <a href="#rodice">Pro rodiče</a>
+      <a href="#predplatne">Základ a Plus</a>
+    </nav>
+    <span class="h-age">pro děti 2–5 let</span>
+  </div>
 
   <section class="h-hero" aria-labelledby="hero-title">
     <div class="h-hero-copy">
-      <span class="h-eyebrow"><span class="h-dot" aria-hidden="true"></span> Hrajeme si. Objevujeme. Rosteme.</span>
-      <h1 id="hero-title">Malé ruce.<br />Velké <span>objevy.</span></h1>
-      <p>Zvířátka hledají mláďata. Dinosauři čekají ve vajíčkách. A každý nový pokus je malé dobrodružství.</p>
-      <p class="h-hero-note">12 her pro zvídavé děti od 2 do 5 let. Bez reklam, skóre a závodění s časem.</p>
-      <div class="h-actions"><a href="#hry" class="h-button h-button-primary">Prohlédnout hry <span aria-hidden="true">↗</span></a><a href="#predplatne" class="h-text-link">3 hry zdarma <span aria-hidden="true">→</span></a></div>
+      <span class="h-eyebrow">
+        <span class="h-dot" aria-hidden="true"></span> Hrajeme si. Objevujeme. Rosteme.
+      </span>
+      <h1 id="hero-title">
+        Malé ruce.
+        <br />
+        Velké <span>objevy.</span>
+      </h1>
+      <p>
+        Zvířátka hledají mláďata. Dinosauři čekají ve vajíčkách. A každý nový pokus je malé
+        dobrodružství.
+      </p>
+      <p class="h-hero-note">
+        12 her pro zvídavé děti od 2 do 5 let. Bez reklam, skóre a závodění s časem.
+      </p>
+      <div class="h-actions">
+        <a href="#hry" class="h-button h-button-primary" data-games-filter="all">
+          Prohlédnout hry <span aria-hidden="true">↗</span>
+        </a>
+        <a href="#hry" class="h-text-link" data-games-filter="free">
+          3 hry zdarma <span aria-hidden="true">→</span>
+        </a>
+      </div>
       <p class="h-availability">Připravujeme pro iPhone, iPad a Android.</p>
     </div>
 
-    <div class="h-playground">
-      <span class="h-playground-note">Malá ochutnávka. Zkus to!</span>
-      <div class="h-demo" data-demo>
-        <div class="h-demo-top"><span>Zvíře a mládě</span><span class="h-demo-badge">hra zdarma</span></div>
-        <h2 id="demo-title">Najdeš moje mládě?</h2>
-        <img data-parent src="/hratkov/animals/dog.webp" alt="Dospělý pejsek" width="512" height="512" fetchpriority="high" class="h-parent-image" />
-        <div class="h-choices" role="group" aria-labelledby="demo-title">
-          <button type="button" data-choice="chick" aria-label="Vybrat kuřátko"><img src="/hratkov/animals/chick.webp" alt="" width="512" height="512" /></button>
-          <button type="button" data-choice="puppy" aria-label="Vybrat štěňátko"><img src="/hratkov/animals/puppy.webp" alt="" width="512" height="512" /></button>
-          <button type="button" data-choice="kitten" aria-label="Vybrat koťátko"><img src="/hratkov/animals/kitten.webp" alt="" width="512" height="512" /></button>
-        </div>
-        <div class="h-demo-bottom"><p data-result role="status" aria-live="polite">Ťukni na správné mládě.</p><button type="button" data-next hidden>Další zvířátko <span aria-hidden="true">→</span></button></div>
-        <noscript><p>Interaktivní ochutnávka potřebuje JavaScript. V aplikaci dítě přiřazuje mládě k dospělému zvířeti.</p></noscript>
-      </div>
-      <div class="h-dino-sticker" aria-hidden="true"><img src="/hratkov/animals/dino.webp" alt="" width="512" height="512" /><span>A taky dinosauři!</span></div>
-    </div>
+    <GameDemo />
   </section>
 
-  <div class="h-promise-strip" aria-label="O aplikaci"><span><i aria-hidden="true">♡</i> Bez reklam</span><span><i aria-hidden="true">◷</i> Vlastním tempem</span><span><i aria-hidden="true">✦</i> CZ · SK · EN</span><span><i aria-hidden="true">⌂</i> Od malého studia Friendlabs</span></div>
+  <div class="h-promise-strip" aria-label="O aplikaci">
+    <span>
+      <i aria-hidden="true">♡</i> Bez reklam
+    </span>
+    <span>
+      <i aria-hidden="true">◷</i> Vlastním tempem
+    </span>
+    <span>
+      <i aria-hidden="true">✦</i> CZ · SK · EN
+    </span>
+    <span>
+      <i aria-hidden="true">⌂</i> Od malého studia Friendlabs
+    </span>
+  </div>
 
   <section class="h-section" id="hry" aria-labelledby="games-title">
-    <div class="h-section-heading"><div><span class="h-eyebrow">Na co si dneska zahrajeme?</span><h2 id="games-title">Dvanáct malých<br /><span>dobrodružství.</span></h2></div><p>Na farmě, v lese i mezi dinosaury. S obrázky, zvuky a namluveným průvodcem.</p></div>
-    <div class="h-filters" role="group" aria-label="Filtrovat hry">{filters.map((filter) => <button type="button" data-filter={filter.id} aria-pressed={filter.id === 'all'}>{filter.label}</button>)}</div>
-    <p class="sr-only" role="status" data-filter-status aria-live="polite">Zobrazeno 12 her.</p>
-    <div class="h-game-grid">{games.map((game) => <article class="h-game" data-game-category={game.category} data-game-free={String(game.free)}><div class:list={['h-game-image', `h-game-image-${game.category}`]}><img src={game.image} alt={`Ukázka hry ${game.title}`} width="440" height="440" loading="lazy" /><span class:list={['h-game-label', { 'h-game-label-free': game.free }]}>{game.free ? 'Zdarma' : 'Plus'}</span></div><div class="h-game-copy"><h3>{game.title}</h3><p>{game.detail}</p></div></article>)}</div>
+    <div class="h-section-heading">
+      <div>
+        <span class="h-eyebrow">Na co si dneska zahrajeme?</span>
+        <h2 id="games-title">
+          Dvanáct malých
+          <br />
+          <span>dobrodružství.</span>
+        </h2>
+      </div>
+      <p>Na farmě, v lese i mezi dinosaury. S obrázky, zvuky a namluveným průvodcem.</p>
+    </div>
+    <GameCatalog />
   </section>
 
   <section class="h-parent-section h-section" id="rodice" aria-labelledby="parent-title">
-    <div class="h-parent-art"><img src="/hratkov/animals/kitten.webp" alt="Koťátko z Hrátkova" width="512" height="512" loading="lazy" /><span class="h-art-caption">Ještě jednou?<br />Klidně.</span></div>
-    <div class="h-parent-copy"><span class="h-eyebrow">Malý svět, ve kterém je čas</span><h2 id="parent-title">Pro děti hraní.<br /><span>Pro rodiče klid.</span></h2><p>Žádné životy, které dojdou. Žádné odpočítávání. Dítě může zkoušet, splést se a přijít na to svým tempem.</p><ul class="h-feature-list"><li><strong>Obtížnost podle věku.</strong><span>Méně možností pro nejmenší, více objevování pro starší děti.</span></li><li><strong>Obrázky na dva způsoby.</strong><span>Pohádková zvířátka i skutečné fotografie ve hrách, které oba styly podporují.</span></li><li><strong>Nákupy řeší rodiče.</strong><span>Rodičovská brána odděluje hraní od nastavení, odkazů a předplatného.</span></li></ul><a class="h-text-link" href="/privacy/hratkov/#cs">Jak chráníme soukromí <span aria-hidden="true">→</span></a></div>
+    <div class="h-parent-art">
+      <img
+        src="/hratkov/animals/kitten.webp"
+        alt="Koťátko z Hrátkova"
+        width="512"
+        height="512"
+        loading="lazy"
+      />
+      <span class="h-art-caption">
+        Ještě jednou?
+        <br />
+        Klidně.
+      </span>
+    </div>
+    <div class="h-parent-copy">
+      <span class="h-eyebrow">Malý svět, ve kterém je čas</span>
+      <h2 id="parent-title">
+        Pro děti hraní.
+        <br />
+        <span>Pro rodiče klid.</span>
+      </h2>
+      <p>
+        Žádné životy, které dojdou. Žádné odpočítávání. Dítě může zkoušet, splést se a přijít na to
+        svým tempem.
+      </p>
+      <ul class="h-feature-list">
+        <li>
+          <strong>Obtížnost podle věku.</strong>
+          <span>Méně možností pro nejmenší, více objevování pro starší děti.</span>
+        </li>
+        <li>
+          <strong>Obrázky na dva způsoby.</strong>
+          <span>Pohádková zvířátka i skutečné fotografie ve hrách, které oba styly podporují.</span>
+        </li>
+        <li>
+          <strong>Nákupy řeší rodiče.</strong>
+          <span>Rodičovská brána odděluje hraní od nastavení, odkazů a předplatného.</span>
+        </li>
+      </ul>
+      <a class="h-text-link" href="/privacy/hratkov/#cs">
+        Jak chráníme soukromí <span aria-hidden="true">→</span>
+      </a>
+    </div>
   </section>
 
-  <section class="h-section h-pricing-section" id="predplatne" aria-labelledby="pricing-title"><div class="h-center-heading"><span class="h-eyebrow">Nejdřív si spolu pohrajte</span><h2 id="pricing-title">Malý začátek zdarma.<br /><span>Celý Hrátkov s Plus.</span></h2></div><div class="h-pricing-grid"><article class="h-price-card"><span class="h-plan-name">Základ</span><h3>Zdarma<span>napořád</span></h3><p>Tři hry na první malé objevy.</p><ul><li>Zvíře a mládě</li><li>Kde bydlím?</li><li>Omalovánky</li></ul><a class="h-button h-button-secondary" href="#hry">Prohlédnout hry zdarma <span aria-hidden="true">↗</span></a></article><article class="h-price-card h-price-plus"><span class="h-plus-tag">Ještě víc objevování</span><span class="h-plan-name">Hrátkov Plus</span><h3>60 Kč<span>/ měsíc</span></h3><p>Všech dvanáct her v jednom malém světě.</p><ul><li>Všechny tři hry ze Základu</li><li>Dalších devět her včetně dinosaurů</li><li>Zvířátka, kreslení, tvary i počítání</li></ul><a class="h-button h-button-primary" href="#dostupnost">Kdy si budeme hrát? <span aria-hidden="true">↗</span></a></article></div><p class="h-price-note">Plánovaná cena pro Česko při vydání. Konečnou cenu a podmínky předplatného vždy uvidíte v App Store nebo Google Play před potvrzením nákupu. Předplatné se automaticky obnovuje do zrušení v příslušném obchodě.</p></section>
+  <section class="h-section h-pricing-section" id="predplatne" aria-labelledby="pricing-title">
+    <div class="h-center-heading">
+      <span class="h-eyebrow">Nejdřív si spolu pohrajte</span>
+      <h2 id="pricing-title">
+        Malý začátek zdarma.
+        <br />
+        <span>Celý Hrátkov s Plus.</span>
+      </h2>
+    </div>
+    <PricingPlans />
+    <p class="h-price-note">
+      Plánovaná cena pro Česko při vydání. Konečnou cenu a podmínky předplatného vždy uvidíte v App
+      Store nebo Google Play před potvrzením nákupu. Předplatné se automaticky obnovuje do zrušení v
+      příslušném obchodě.
+    </p>
+  </section>
 
-  <section class="h-section h-faq" aria-labelledby="faq-title"><div><span class="h-eyebrow">Ještě něco vás zajímá?</span><h2 id="faq-title">Rodiče se ptají.</h2><p>Nenašli jste odpověď?<br /><a href="mailto:friendlabs.app@gmail.com?subject=Hr%C3%A1tkov">Napište nám.</a></p></div><div class="h-faq-list">{faqs.map(([question, answer]) => <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></section>
+  <section class="h-section h-faq" aria-labelledby="faq-title">
+    <div>
+      <span class="h-eyebrow">Ještě něco vás zajímá?</span>
+      <h2 id="faq-title">Rodiče se ptají.</h2>
+      <p>
+        Nenašli jste odpověď?
+        <br />
+        <a href="mailto:friendlabs.app@gmail.com?subject=Hr%C3%A1tkov">Napište nám.</a>
+      </p>
+    </div>
+    <div class="h-faq-list">
+      {faqs.map(([question, answer]) => (
+        <details>
+          <summary>
+            {question}
+            <span aria-hidden="true">+</span>
+          </summary>
+          <p>{answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
 
-  <section class="h-ending" id="dostupnost"><div><span class="h-eyebrow">Už brzy na malých obrazovkách</span><h2>Tak zase<br /><span>u dalšího objevu.</span></h2><p>Hrátkov připravujeme pro iPhone, iPad a Android. Odkazy na stažení přidáme, až bude aplikace v obchodech.</p><a class="h-text-link" href="mailto:friendlabs.app@gmail.com?subject=Hr%C3%A1tkov%20%E2%80%94%20dotaz">Mám dotaz k Hrátkovu <span aria-hidden="true">→</span></a></div><img src="/hratkov/animals/puppy.webp" alt="Štěňátko z Hrátkova" width="512" height="512" loading="lazy" /></section>
+  <section class="h-ending" id="dostupnost">
+    <div>
+      <span class="h-eyebrow">Už brzy na malých obrazovkách</span>
+      <h2>
+        Tak zase
+        <br />
+        <span>u dalšího objevu.</span>
+      </h2>
+      <p>
+        Hrátkov připravujeme pro iPhone, iPad a Android. Odkazy na stažení přidáme, až bude aplikace
+        v obchodech.
+      </p>
+      <a
+        class="h-text-link"
+        href="mailto:friendlabs.app@gmail.com?subject=Hr%C3%A1tkov%20%E2%80%94%20dotaz"
+      >
+        Mám dotaz k Hrátkovu <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <img
+      src="/hratkov/animals/puppy.webp"
+      alt="Štěňátko z Hrátkova"
+      width="512"
+      height="512"
+      loading="lazy"
+    />
+  </section>
 </SiteLayout>
-
-<script>
-  const demo = document.querySelector<HTMLElement>('[data-demo]');
-  if (demo) {
-    const parent = demo.querySelector<HTMLImageElement>('[data-parent]')!;
-    const result = demo.querySelector<HTMLElement>('[data-result]')!;
-    const next = demo.querySelector<HTMLButtonElement>('[data-next]')!;
-    const choices = [...demo.querySelectorAll<HTMLButtonElement>('[data-choice]')];
-    const rounds = [
-      { parent: 'dog', name: 'Dospělý pejsek', baby: 'puppy', success: 'Ano! Pejsek a štěňátko.' },
-      { parent: 'cat', name: 'Dospělá kočka', baby: 'kitten', success: 'Ano! Kočka a koťátko.' },
-      { parent: 'hen', name: 'Dospělá slepice', baby: 'chick', success: 'Ano! Slepice a kuřátko.' },
-    ];
-    let round = 0;
-    let solved = false;
-    choices.forEach((button) => button.addEventListener('click', () => {
-      if (solved) return;
-      if (button.dataset.choice === rounds[round].baby) {
-        solved = true;
-        button.classList.add('is-correct');
-        result.textContent = rounds[round].success;
-        next.hidden = false;
-      } else {
-        result.textContent = 'Zkus najít jiné mládě. Máš na to čas.';
-      }
-    }));
-    next.addEventListener('click', () => {
-      round = (round + 1) % rounds.length;
-      solved = false;
-      choices.forEach((button) => button.classList.remove('is-correct'));
-      parent.src = `/hratkov/animals/${rounds[round].parent}.webp`;
-      parent.alt = rounds[round].name;
-      next.hidden = true;
-      result.textContent = 'Najdeš moje mládě?';
-      choices[0].focus();
-    });
-  }
-  const filters = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
-  const games = [...document.querySelectorAll<HTMLElement>('[data-game-category]')];
-  const filterStatus = document.querySelector<HTMLElement>('[data-filter-status]');
-  filters.forEach((button) => button.addEventListener('click', () => {
-    const selected = button.dataset.filter;
-    filters.forEach((filter) => filter.setAttribute('aria-pressed', String(filter === button)));
-    games.forEach((game) => {
-      game.hidden = !(selected === 'all' || (selected === 'free' && game.dataset.gameFree === 'true') || selected === game.dataset.gameCategory);
-    });
-    if (filterStatus) filterStatus.textContent = `Zobrazeno ${games.filter((game) => !game.hidden).length} her.`;
-  }));
-</script>

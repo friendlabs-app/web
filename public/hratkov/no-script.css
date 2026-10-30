@@ -1,0 +1,9 @@
+[data-catalog] .h-game[hidden] {
+  display: block !important;
+}
+[data-catalog] .h-catalog-controls {
+  display: none;
+}
+[data-catalog] .h-game-grid {
+  grid-template-rows: none;
+}

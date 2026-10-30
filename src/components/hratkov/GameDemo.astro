@@ -1,0 +1,68 @@
+---
+import { demoChoices, demoRounds } from '../../data/demo';
+---
+
+<div class="h-playground">
+  <span class="h-playground-note">Malá ochutnávka. Zkus to!</span>
+  <div class="h-demo" data-demo>
+    <div class="h-demo-top">
+      <span>Zvíře a mládě</span>
+      <span class="h-demo-badge">hra zdarma</span>
+    </div>
+    <h2 id="demo-title">Najdeš moje mládě?</h2>
+    <div class="h-parent-frame">
+      {demoRounds.map((round, index) => (
+        <img
+          data-parent={round.parent}
+          src={`/hratkov/animals/${round.parent}.webp`}
+          alt={round.name}
+          width="512"
+          height="512"
+          fetchpriority={index === 0 ? 'high' : 'low'}
+          hidden={index !== 0}
+          class="h-parent-image"
+        />
+      ))}
+    </div>
+    <div class="h-choices" role="group" aria-labelledby="demo-title">
+      {demoChoices.map((choice) => (
+        <button
+          type="button"
+          data-choice={choice.id}
+          aria-label={choice.label}
+          aria-pressed="false"
+        >
+          <img src={`/hratkov/animals/${choice.id}.webp`} alt="" width="512" height="512" />
+        </button>
+      ))}
+    </div>
+    <div class="h-demo-bottom">
+      <p data-result role="status">
+        Ťukni na správné mládě.
+      </p>
+      <div class="h-demo-controls">
+        <span class="h-demo-progress" data-round aria-label="Zvířátko 1 ze 3">
+          1 / 3
+        </span>
+        <button type="button" data-next disabled>
+          Další zvířátko <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+    <noscript>
+      <p>
+        Interaktivní ochutnávka potřebuje JavaScript. V aplikaci dítě přiřazuje mládě k dospělému
+        zvířeti.
+      </p>
+    </noscript>
+  </div>
+  <div class="h-dino-sticker" aria-hidden="true">
+    <img src="/hratkov/animals/dino.webp" alt="" width="512" height="512" />
+    <span>A taky dinosauři!</span>
+  </div>
+</div>
+
+<script>
+  import { initGameDemo } from '../../scripts/game-demo';
+  document.querySelectorAll<HTMLElement>('[data-demo]').forEach(initGameDemo);
+</script>

@@ -7,6 +7,8 @@ Node 22.23.4+ (ověřeno na Node 24), npm 9.6.5+.
 npm ci
 npm run dev
 npm run check
+npm test
+npm run format:check
 npm run build
 npm run preview
 ```
@@ -15,7 +17,8 @@ npm run preview
 
 - `/` — původní prezentace Friendlabs s odkazem na Hrátkov.
 - `/hratkov/` — česká stránka aplikace, ochutnávka přiřazování mláďat,
-  filtr všech 12 her, Základ (3 hry zdarma) a Plus (plánovaných 60 Kč měsíčně).
+  filtr a stránkování všech 12 her po čtyřech, Základ (3 hry zdarma)
+  a Plus (plánovaných 60 Kč měsíčně).
 - `/privacy/` — rozcestník zásad a informace o webu.
 - `/privacy/hratkov/` — aktualizované zásady v EN/CZ/SK; původní adresy
   včetně kotev `#cs` a `#sk` zůstávají funkční.
@@ -26,47 +29,60 @@ Obrázky a písma v `public/hratkov/` pocházejí z aplikace Hrátkov. Web
 nepoužívá externí font server, analytiku, reklamní skripty ani formulář
 sbírající kontakty. Ochutnávka hry pracuje pouze v prohlížeči a nic neodesílá.
 
+## Úpravy a ověření
+
+Interaktivní části mají samostatné Astro komponenty v `src/components/hratkov/`
+a malé TypeScript moduly v `src/scripts/`. Výběr a stránkování her používají
+společnou čistou funkci v `src/lib/catalog.ts`; testy ověřují dostupnost všech
+her, bezplatný obsah, hranice stránek a prázdný katalog.
+
+`npm run format` sjednotí formátování. CI kontroluje formát, typy, testy,
+sestavení a balíček pro nasazení. Při změně rozložení ověřit filtry, všechny
+stránky a tři kola ochutnávky na šířkách 320, 360, 390, 768, 1024 a 1440 px.
+Kontroly zahrnují polohu okolních sekcí a scrollu, klávesnici, zvětšené písmo
+a zobrazení všech dvanácti her bez JavaScriptu.
+
+Cloudflare načítá bezpečnostní hlavičky z `public/_headers`. CSP povoluje
+skripty, styly, obrázky a písma pouze z vlastního webu; Astro proto sestavuje
+skripty do externích souborů. Nové externí integrace vyžadují posouzení CSP
+a zásad soukromí. Nevkládat inline skripty ani `style` atributy.
+
 ## Nasazení na Cloudflare
 
-Web se sestaví do `dist/`. Pro nový projekt je připravený Cloudflare Worker
-se statickými assets v `wrangler.jsonc`; serverové funkce ani Astro adaptér
-nejsou potřeba. Historické přesměrování `/privacy/zviratkov` na
+Web je napojený na Cloudflare Pages, projekt `friendlabs-web`, větev
+`feat/hratkov-astro-site`. Build je `npm run build`, výstup `dist`, Node
+`24.15.0`. Push do této větve spouští nové nasazení. Větev `main` zatím
+obsahuje původní web; produkční větev přepnout až po sloučení PR.
+
+Serverové funkce ani Astro adaptér nejsou potřeba. Historické přesměrování `/privacy/zviratkov` na
 `/privacy/hratkov/` je v `public/_redirects` a součástí výstupu.
 
-```sh
-npm run build
-npm run check:deploy        # kontrola balíčku bez přihlášení a publikování
-npx wrangler login          # přihlášení k vlastnímu Cloudflare účtu
-npm run deploy             # publikování po ověření zásad a obsahu
-```
+### Nastavení Pages
 
-Při prvním nasazení použít adresu Workeru na `workers.dev`. Připojení
-produkční `friendlabs.app` udělat až po ověření nového webu a domény v účtu.
-Konfigurace úmyslně neobsahuje account ID, token ani automatickou změnu DNS.
+V dashboardu **Workers & Pages → friendlabs-web → Settings → Builds**:
 
-### Propojení GitHubu v dashboardu
+- repo `friendlabs-app/web`, produkční větev `feat/hratkov-astro-site`;
+- framework Astro, build `npm run build`, výstup `dist`;
+- kořen repozitáře, proměnná `NODE_VERSION=24.15.0`.
 
-1. Založit Cloudflare účet a ověřit e-mail.
-2. Otevřít **Compute → Workers & Pages → Create application** a připojit GitHub.
-3. Povolit přístup jen k repozitáři `friendlabs-app/web`.
-4. Zvolit název Workeru `friendlabs-web`, build `npm run build`, deploy
-   `npx wrangler deploy`, kořen repozitáře a Node `24.15.0` (pokud jej
-   dashboard automaticky nepřevezme ze souboru `.node-version`).
-5. Pro přípravu použít větev `feat/hratkov-astro-site`. Větev `main` zatím
-   obsahuje původní web; produkční větev změnit po kontrole a sloučení PR.
-6. Ověřit veřejný náhled a až potom připojit `friendlabs.app` přes domény
-   Workeru. Při převodu DNS zachovat stávající záznamy pro e-mail a další služby.
+Veřejný náhled je `https://friendlabs-web.pages.dev`. Doménu `friendlabs.app`
+připojit až po kontrole náhledu; při změně DNS zachovat záznamy e-mailu
+a dalších služeb. Konfigurace neobsahuje token ani automatickou změnu DNS.
 
-Při použití již existujícího Cloudflare Pages projektu je stejný statický
-výstup kompatibilní: build `npm run build`, output `dist`, Node `24.15.0`.
-Nastavení Workeru se pro Pages nepoužije.
+### Samostatná alternativa přes Workers
+
+`wrangler.jsonc` je připravený pro statické assets, ale v Pages se nepoužije.
+`npm run check:deploy` ověří balíček bez publikování. Případný příkaz
+`npm run deploy` cílí na Workers a vyžaduje vlastní přihlášení přes
+`npx wrangler login`; k běžnému nasazení do stávajícího Pages projektu
+se nepoužívá.
 
 `vercel.json` obsahuje pouze `git.deploymentEnabled: false`, aby stávající
 Git integrace Vercelu nevytvářela další automatická nasazení z této větve.
 Nenahrazuje odpojení či smazání projektu v účtu Vercel a nemaže staré náhledy.
 
-Dokumentace: [Workers se statickými assets](https://developers.cloudflare.com/workers/static-assets/get-started/),
-[GitHub integrace](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/).
+Dokumentace: [Cloudflare Pages a Astro](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/),
+[GitHub integrace](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/).
 
 ## Před vydáním
 
