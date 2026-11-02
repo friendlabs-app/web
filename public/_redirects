@@ -1,2 +1,14 @@
-/privacy/zviratkov /privacy/hratkov/ 301
-/privacy/zviratkov/ /privacy/hratkov/ 301
+https://friendlab.cz/* https://hratkov.friendlab.cz/:splat 301
+https://www.friendlab.cz/* https://hratkov.friendlab.cz/:splat 301
+/hratkov / 301
+/hratkov/ / 301
+/support /podpora/ 301
+/support/ /podpora/ 301
+/privacy /soukromi/web/ 301
+/privacy/ /soukromi/web/ 301
+/privacy/hratkov /soukromi/ 301
+/privacy/hratkov/ /soukromi/ 301
+/privacy/zviratkov /soukromi/ 301
+/privacy/zviratkov/ /soukromi/ 301
+/hratkov/podminky /podminky/ 301
+/hratkov/podminky/ /podminky/ 301

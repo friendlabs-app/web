@@ -1,13 +1,14 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
+import { site, websiteSchema } from '../data/site';
 interface Props {
   title: string;
   description: string;
   lang?: 'en' | 'cs' | 'sk';
-  hratkov?: boolean;
+  noindex?: boolean;
 }
 
-const { title, description, lang = 'en', hratkov = false } = Astro.props;
+const { title, description, lang = 'cs', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -16,65 +17,67 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content={hratkov ? '#eef6ff' : '#fbfaf7'} />
+    <meta name="theme-color" content="#eef6ff" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:image" content={new URL('/hratkov/games/match.webp', Astro.site)} />
     <meta name="twitter:card" content="summary" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
-    {hratkov && <link rel="stylesheet" href="/hratkov/hratkov.css" />}
-    {hratkov && (
-      <link
-        rel="preload"
-        href="/hratkov/fonts/Baloo2-ExtraBold.ttf"
-        as="font"
-        type="font/ttf"
-        crossorigin
-      />
-    )}
-    {hratkov && (
-      <link
-        rel="preload"
-        href="/hratkov/fonts/Nunito-Bold.ttf"
-        as="font"
-        type="font/ttf"
-        crossorigin
-      />
-    )}
-    {hratkov && (
-      <link
-        rel="preload"
-        href="/hratkov/fonts/Nunito-ExtraBold.ttf"
-        as="font"
-        type="font/ttf"
-        crossorigin
-      />
+    <link rel="stylesheet" href="/hratkov/hratkov.css" />
+    <link
+      rel="preload"
+      href="/hratkov/fonts/Baloo2-ExtraBold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/hratkov/fonts/Nunito-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/hratkov/fonts/Nunito-ExtraBold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    {Astro.url.pathname === '/' && (
+      <script type="application/ld+json" is:inline set:html={websiteSchema} />
     )}
   </head>
-  <body class:list={{ 'hratkov-site': hratkov }}>
+  <body class="hratkov-site">
     <a href="#main" class="skip-link">
       {lang === 'cs' ? 'Přejít na obsah' : 'Skip to content'}
     </a>
-    <SiteHeader lang={lang} />
-    <main id="main" tabindex="-1" class:list={{ 'hratkov-main': hratkov }}>
+    <SiteHeader />
+    <main
+      id="main"
+      tabindex="-1"
+      class={Astro.url.pathname === '/' ? 'hratkov-main' : 'content-main'}
+    >
       <slot />
     </main>
     <footer class="site-footer">
-      <p>
-        © {new Date().getFullYear()} Friendlabs <span aria-hidden="true">·</span>{' '}
-        <a href="/hratkov/">Hrátkov</a> <span aria-hidden="true">·</span>{' '}
-        <a href="/privacy/hratkov/">{lang === 'cs' ? 'Soukromí aplikace' : 'App privacy'}</a>{' '}
-        <span aria-hidden="true">·</span>{' '}
-        <a href="/hratkov/podminky/">{lang === 'cs' ? 'Podmínky' : 'Terms'}</a>{' '}
-        <span aria-hidden="true">·</span>{' '}
-        <a href="/support/">{lang === 'cs' ? 'Podpora' : 'Support'}</a>
-      </p>
+      <nav aria-label="Další informace o Hrátkově">
+        <a href="/">Hrátkov</a>
+        <a href="/podpora/">Podpora</a>
+        <a href="/soukromi/">Soukromí aplikace</a>
+        <a href="/podminky/">Podmínky</a>
+        <a href="/soukromi/web/">Soukromí webu</a>
+      </nav>
+      <p>© {new Date().getFullYear()} Hrátkov · Vytváří Friendlabs</p>
     </footer>
   </body>
 </html>

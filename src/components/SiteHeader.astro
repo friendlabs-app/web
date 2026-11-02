@@ -1,34 +1,17 @@
 ---
-interface Props {
-  lang: 'en' | 'cs' | 'sk';
-}
-
-const { lang } = Astro.props;
 const path = Astro.url.pathname;
 const links = [
-  { href: '/hratkov/', label: 'Hrátkov', current: path === '/hratkov/' },
-  {
-    href: '/support/',
-    label: lang === 'cs' ? 'Podpora' : 'Support',
-    current: path === '/support/',
-  },
-  {
-    href: '/privacy/',
-    label: lang === 'cs' ? 'Soukromí' : 'Privacy',
-    current: path.startsWith('/privacy/'),
-  },
+  { href: '/#hry', label: 'Naše hry', current: false },
+  { href: '/#predplatne', label: 'Základ a Plus', current: false },
+  { href: '/podpora/', label: 'Podpora', current: path === '/podpora/' },
 ];
 ---
 
 <header class="site-header">
-  <a class="brand" href="/" aria-label={lang === 'cs' ? 'Friendlabs — úvod' : 'Friendlabs — home'}>
-    <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="12" cy="16" r="10" fill="#4f6df5" />
-      <circle cx="21" cy="16" r="10" fill="#ff8a5c" fill-opacity="0.85" />
-    </svg>
-    Friendlabs
+  <a class="brand" href="/" aria-label="Hrátkov — úvod">
+    hrátkov<span aria-hidden="true">.</span>
   </a>
-  <nav aria-label={lang === 'cs' ? 'Hlavní navigace' : 'Main navigation'}>
+  <nav aria-label="Hlavní navigace">
     {links.map((link) => (
       <a href={link.href} aria-current={link.current ? 'page' : undefined}>
         {link.label}
@@ -39,6 +22,10 @@ const links = [
 
 <style>
   .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #fff;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
@@ -53,25 +40,24 @@ const links = [
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 0;
     width: fit-content;
     color: var(--text);
     font:
-      700 1.05rem / 1.25 system-ui,
+      800 2.4rem / 1.25 Baloo,
       sans-serif;
     letter-spacing: -0.04em;
     text-decoration: none;
   }
-  .brand svg {
-    display: block;
-    flex-shrink: 0;
+  .brand span {
+    color: var(--h-coral);
   }
   nav {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
     justify-self: end;
-    width: min(100%, 17.5rem);
+    width: min(100%, 22rem);
   }
   nav a {
     display: flex;
@@ -92,6 +78,9 @@ const links = [
     color: var(--accent);
   }
   @media (max-width: 560px) {
+    .brand {
+      font-size: 1.9rem;
+    }
     .site-header {
       grid-template-columns: minmax(0, 1fr);
       gap: 8px;

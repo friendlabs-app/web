@@ -1,20 +1,23 @@
 ---
-import SiteLayout from '../../../layouts/SiteLayout.astro';
-import { privacy } from '../../../data/privacy';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { privacy } from '../../data/privacy';
+const languages = [...privacy].sort(
+  (a, b) => ['cs', 'sk', 'en'].indexOf(a.id) - ['cs', 'sk', 'en'].indexOf(b.id),
+);
 ---
 
 <SiteLayout
-  title="Hrátkov — Privacy policy / Zásady soukromí — Friendlabs"
-  description="Hrátkov privacy: child settings stay on the device; optional subscriptions are verified with RevenueCat. English, Czech, and Slovak policies."
+  title="Hrátkov — zásady ochrany soukromí"
+  description="Zásady soukromí Hrátkova v češtině, slovenštině a angličtině. Nastavení dítěte zůstává v zařízení, volitelné předplatné ověřuje RevenueCat."
 >
   <article class="page">
-    <h1>Hrátkov — Privacy / Soukromí / Súkromie</h1>
-    <nav class="policy-links" aria-label="Policy language">
-      <a href="#en">English</a>
+    <h1>Soukromí v Hrátkově</h1>
+    <nav class="policy-links" aria-label="Jazyk zásad soukromí">
       <a href="#cs">Česky</a>
       <a href="#sk">Slovensky</a>
+      <a href="#en">English</a>
     </nav>
-    {privacy.map((language) => (
+    {languages.map((language) => (
       <section
         id={language.id}
         lang={language.id}
@@ -36,7 +39,7 @@ import { privacy } from '../../../data/privacy';
         ))}
       </section>
     ))}
-    <h2>Related policies / Související informace</h2>
+    <h2>Související informace</h2>
     <ul>
       <li>
         <a href="https://www.revenuecat.com/privacy">RevenueCat privacy policy</a>
@@ -51,12 +54,12 @@ import { privacy } from '../../../data/privacy';
         <a href="https://policies.google.com/privacy">Google privacy policy</a>
       </li>
       <li>
-        <a href="/privacy/">Friendlabs website privacy</a>
+        <a href="/soukromi/web/">Soukromí tohoto webu</a>
       </li>
     </ul>
     <p>
       <a href="mailto:friendlabs.app@gmail.com">friendlabs.app@gmail.com</a> ·{' '}
-      <a href="/hratkov/">Hrátkov</a> · <a href="/support/">Support</a>
+      <a href="/">Hrátkov</a> · <a href="/podpora/">Podpora</a>
     </p>
   </article>
 </SiteLayout>

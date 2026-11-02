@@ -22,7 +22,7 @@ export const privacy: readonly PrivacyLanguage[] = [
       {
         heading: 'Who operates Hrátkov',
         paragraphs: [
-          'Hrátkov is developed by Friendlabs, an independent app studio. For privacy requests and support, contact friendlabs.app@gmail.com. These terms describe the app; website privacy is explained separately on the Friendlabs privacy page.',
+          'Hrátkov is developed by Friendlabs, an independent app studio. For privacy requests and support, contact friendlabs.app@gmail.com. These terms describe the app; website privacy is explained separately on this website’s privacy page.',
         ],
       },
       {
@@ -81,7 +81,7 @@ export const privacy: readonly PrivacyLanguage[] = [
       {
         heading: 'Kdo provozuje Hrátkov',
         paragraphs: [
-          'Hrátkov vyvíjí Friendlabs, nezávislé studio aplikací. S dotazy na soukromí a žádostmi o podporu se obraťte na friendlabs.app@gmail.com. Tyto zásady popisují aplikaci; soukromí samotného webu popisujeme zvlášť na stránce soukromí Friendlabs.',
+          'Hrátkov vyvíjí Friendlabs, nezávislé studio aplikací. S dotazy na soukromí a žádostmi o podporu se obraťte na friendlabs.app@gmail.com. Tyto zásady popisují aplikaci; soukromí samotného webu popisujeme zvlášť na stránce soukromí tohoto webu.',
         ],
       },
       {
@@ -140,7 +140,7 @@ export const privacy: readonly PrivacyLanguage[] = [
       {
         heading: 'Kto prevádzkuje Hrátkov',
         paragraphs: [
-          'Hrátkov vyvíja Friendlabs, nezávislé štúdio aplikácií. S otázkami o súkromí a žiadosťami o podporu sa obráťte na friendlabs.app@gmail.com. Tieto zásady opisujú aplikáciu; súkromie webu opisujeme osobitne na stránke súkromia Friendlabs.',
+          'Hrátkov vyvíja Friendlabs, nezávislé štúdio aplikácií. S otázkami o súkromí a žiadosťami o podporu sa obráťte na friendlabs.app@gmail.com. Tieto zásady opisujú aplikáciu; súkromie webu opisujeme osobitne na stránke súkromia tohto webu.',
         ],
       },
       {

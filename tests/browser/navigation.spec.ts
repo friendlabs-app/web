@@ -17,17 +17,16 @@ for (const width of [320, 360, 390, 768, 1024, 1440]) {
     }) => {
       await page.setViewportSize({ width, height: 1000 });
       await page.emulateMedia({ colorScheme });
-      await page.goto('/hratkov/');
+      await page.goto('/');
       await page.evaluate(() => document.fonts.ready);
       const baseline = await headerGeometry(page);
 
       const links = [
-        { selector: '.site-header a[href="/support/"]', path: '/support/' },
-        { selector: '.site-header a[href="/privacy/"]', path: '/privacy/' },
+        { selector: '.site-header a[href="/podpora/"]', path: '/podpora/' },
+        { selector: '.site-footer a[href="/soukromi/"]', path: '/soukromi/' },
         { selector: '.site-header .brand', path: '/' },
-        { selector: '.site-header a[href="/hratkov/"]', path: '/hratkov/' },
-        { selector: '.site-footer a[href="/hratkov/podminky/"]', path: '/hratkov/podminky/' },
-        { selector: '.site-footer a[href="/privacy/hratkov/"]', path: '/privacy/hratkov/' },
+        { selector: '.site-footer a[href="/podminky/"]', path: '/podminky/' },
+        { selector: '.site-footer a[href="/soukromi/web/"]', path: '/soukromi/web/' },
       ];
 
       for (const link of links) {

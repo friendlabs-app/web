@@ -1,0 +1,40 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { site } from '../../../data/site';
+---
+
+<SiteLayout
+  title="Hrátkov — soukromí na webu"
+  description="Jak web Hrátkova zachází s údaji návštěvníků. Bez reklamních sledovačů, externích písem a analytiky návštěvnosti."
+>
+  <article class="page">
+    <h1>Soukromí na tomto webu</h1>
+    <p class="updated">Poslední aktualizace: 2. listopadu 2026</p>
+    <p>
+      Tato stránka popisuje web Hrátkova. Pro samotnou aplikaci platí{' '}
+      <a href="/soukromi/#cs">samostatné zásady ochrany soukromí</a>.
+    </p>
+    <h2>Prohlížení a ochutnávka hry</h2>
+    <p>
+      Na web nepřidáváme analytiku návštěvnosti, reklamní sledovače ani reklamní cookies. Obrázky a
+      písma se načítají z tohoto webu. Ochutnávka hry funguje pouze ve vašem prohlížeči; odpovědi
+      nikam neodesílá.
+    </p>
+    <h2>Hosting</h2>
+    <p>
+      Web hostuje Cloudflare. Pro doručení a zabezpečení stránek zpracovává technické údaje
+      požadavků. Podrobnosti popisují{' '}
+      <a href="https://www.cloudflare.com/privacypolicy/">zásady soukromí Cloudflare</a>.
+    </p>
+    <h2>Když nám napíšete</h2>
+    <p>
+      Pokud nás kontaktujete e-mailem, používáme vaši adresu a obsah zprávy k vyřízení požadavku.
+      Neposílejte osobní informace o dětech ani údaje o platební kartě.
+    </p>
+    <h2>Kontakt</h2>
+    <p>
+      Hrátkov vyvíjí Friendlabs. Dotazy k soukromí můžete poslat na{' '}
+      <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>.
+    </p>
+  </article>
+</SiteLayout>

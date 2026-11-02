@@ -25,8 +25,9 @@
   --h-mint: #c8f2e5;
   --h-sun: #ffe58f;
   --h-coral: #fa896b;
-  --h-nav-height: 88px;
+  --h-nav-height: var(--site-header-offset);
   --bg: #fff;
+  --card: #fff;
   --text: var(--h-ink);
   --muted: var(--h-muted);
   --accent: var(--h-blue);
@@ -37,8 +38,7 @@
 }
 .hratkov-site h1,
 .hratkov-site h2,
-.hratkov-site h3,
-.h-logo {
+.hratkov-site h3 {
   font-family: Baloo, system-ui, sans-serif;
   font-weight: 800;
   letter-spacing: -0.035em;
@@ -52,50 +52,6 @@
 .hratkov-site .site-footer {
   max-width: 1208px;
   font-size: 0.85rem;
-}
-.h-subnav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 18px 0;
-  background: #fff;
-  border-bottom: 1px solid #edf0f6;
-}
-.h-logo {
-  color: var(--h-ink);
-  font-size: 2.4rem;
-  line-height: 1;
-  text-decoration: none;
-}
-.h-logo span {
-  color: var(--h-coral);
-}
-.h-subnav nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 26px;
-}
-.h-subnav nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--h-ink);
-  font-size: 0.95rem;
-  text-decoration: none;
-}
-.h-subnav nav a:hover {
-  color: var(--h-blue);
-}
-.h-age {
-  padding: 7px 15px;
-  border: 1px solid #e2e7f0;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  white-space: nowrap;
 }
 .h-hero {
   display: grid;
@@ -874,34 +830,10 @@
   }
 }
 @media (max-width: 720px) {
-  .hratkov-site {
-    --h-nav-height: 108px;
-  }
   .hratkov-main {
     overflow-wrap: anywhere;
     padding-left: 20px;
     padding-right: 20px;
-  }
-  .h-subnav {
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    padding: 12px 0 8px;
-  }
-  .h-subnav nav {
-    order: 1;
-    width: 100%;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .h-subnav nav a {
-    font-size: 0.8rem;
-  }
-  .h-age {
-    font-size: 0.7rem;
-    padding: 4px 10px;
-  }
-  .h-logo {
-    font-size: 2rem;
   }
   .h-hero {
     grid-template-columns: 1fr;
@@ -1046,9 +978,6 @@
   }
 }
 @media (max-width: 380px) {
-  .h-logo {
-    font-size: 1.8rem;
-  }
   .h-hero h1 {
     font-size: 3.45rem;
   }
