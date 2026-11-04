@@ -1,18 +1,18 @@
 @font-face {
   font-family: Baloo;
-  src: url('/hratkov/fonts/Baloo2-ExtraBold.ttf') format('truetype');
+  src: url('/hratkov/fonts/Baloo2-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-display: swap;
 }
 @font-face {
   font-family: Nunito;
-  src: url('/hratkov/fonts/Nunito-Bold.ttf') format('truetype');
+  src: url('/hratkov/fonts/Nunito-Bold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: Nunito;
-  src: url('/hratkov/fonts/Nunito-ExtraBold.ttf') format('truetype');
+  src: url('/hratkov/fonts/Nunito-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-display: swap;
 }
