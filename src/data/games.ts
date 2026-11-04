@@ -12,7 +12,7 @@ export const games: readonly Game[] = [
   {
     id: 'match',
     title: 'Zvíře a mládě',
-    detail: 'Které mládě patří k mamince?',
+    detail: 'Které mládě patří k rodiči?',
     category: 'animals',
     image: '/hratkov/games/match.webp',
     free: true,
