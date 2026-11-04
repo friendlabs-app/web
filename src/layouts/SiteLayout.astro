@@ -1,0 +1,83 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import { site, websiteSchema } from '../data/site';
+interface Props {
+  title: string;
+  description: string;
+  lang?: 'en' | 'cs' | 'sk';
+  noindex?: boolean;
+}
+
+const { title, description, lang = 'cs', noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef6ff" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={new URL('/hratkov/games/match.webp', Astro.site)} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/hratkov/hratkov.css" />
+    <link
+      rel="preload"
+      href="/hratkov/fonts/Baloo2-ExtraBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/hratkov/fonts/Nunito-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/hratkov/fonts/Nunito-ExtraBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {Astro.url.pathname === '/' && (
+      <script type="application/ld+json" is:inline set:html={websiteSchema} />
+    )}
+  </head>
+  <body class="hratkov-site">
+    <a href="#main" class="skip-link">
+      {lang === 'cs' ? 'Přejít na obsah' : 'Skip to content'}
+    </a>
+    <SiteHeader />
+    <main
+      id="main"
+      tabindex="-1"
+      class={Astro.url.pathname === '/' ? 'hratkov-main' : 'content-main'}
+    >
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <nav aria-label="Další informace o Hrátkově">
+        <a href="/">Hrátkov</a>
+        <a href="/podpora/">Podpora</a>
+        <a href="/soukromi/">Soukromí aplikace</a>
+        <a href="/podminky/">Podmínky</a>
+        <a href="/soukromi/web/">Soukromí webu</a>
+      </nav>
+      <p>© {new Date().getFullYear()} Hrátkov · Vytváří Friendlabs</p>
+    </footer>
+  </body>
+</html>

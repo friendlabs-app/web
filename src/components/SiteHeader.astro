@@ -1,0 +1,94 @@
+---
+const path = Astro.url.pathname;
+const links = [
+  { href: '/#hry', label: 'Naše hry', current: false },
+  { href: '/#predplatne', label: 'Základ a Plus', current: false },
+  { href: '/podpora/', label: 'Podpora', current: path === '/podpora/' },
+];
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Hrátkov — úvod">
+    hrátkov<span aria-hidden="true">.</span>
+  </a>
+  <nav aria-label="Hlavní navigace">
+    {links.map((link) => (
+      <a href={link.href} aria-current={link.current ? 'page' : undefined}>
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #fff;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 12px 24px;
+    max-width: 1256px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    font-family: system-ui, sans-serif;
+    line-height: 1.25;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    width: fit-content;
+    color: var(--text);
+    font:
+      800 2.4rem / 1.25 Baloo,
+      sans-serif;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+  }
+  .brand span {
+    color: var(--h-coral);
+  }
+  nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    justify-self: end;
+    width: min(100%, 22rem);
+  }
+  nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: max(44px, 2.5em);
+    padding: 0 4px;
+    color: var(--muted);
+    font:
+      700 0.85rem / 1.25 system-ui,
+      sans-serif;
+    overflow-wrap: anywhere;
+    text-align: center;
+    text-decoration: none;
+  }
+  nav a:hover,
+  nav a[aria-current] {
+    color: var(--accent);
+  }
+  @media (max-width: 560px) {
+    .brand {
+      font-size: 1.9rem;
+    }
+    .site-header {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      padding: 16px 20px;
+    }
+    nav {
+      justify-self: stretch;
+      width: 100%;
+    }
+  }
+</style>

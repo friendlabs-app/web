@@ -1,0 +1,58 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { site } from '../../data/site';
+---
+
+<SiteLayout
+  title="Hrátkov — podpora a kontakt"
+  description="Pomoc s aplikací Hrátkov, obnovením nákupů a správou předplatného. Kontakt na tvůrce aplikace."
+>
+  <article class="page">
+    <span class="h-eyebrow">Jsme tu pro rodiče</span>
+    <h1>Jak vám můžeme pomoct?</h1>
+    <p>
+      Máte dotaz k Hrátkovu nebo něco nefunguje? Napište nám. Obvykle odpovídáme během několika dnů.
+    </p>
+    <p>
+      <a
+        class="h-text-link"
+        href={`mailto:${site.supportEmail}?subject=Hr%C3%A1tkov%20%E2%80%94%20podpora`}
+      >
+        {site.supportEmail} <span aria-hidden="true">→</span>
+      </a>
+    </p>
+
+    <h2>Obnovení nákupů</h2>
+    <p>
+      V aplikaci otevřete Pro rodiče a vyřešte početní příklad. Potom vyberte Obnovit nákupy.
+      Zkontrolujte připojení a účet v App Store nebo Google Play, se kterým byl nákup provedený.
+      Bezplatný Základ se neobnovuje — jeho tři hry jsou dostupné bez nákupu.
+    </p>
+    <h2>Správa předplatného</h2>
+    <p>
+      Předplatné se spravuje v obchodě, kde bylo zakoupené. Smazání aplikace předplatné nezruší.
+    </p>
+    <ul>
+      <li>
+        <a href="https://apps.apple.com/account/subscriptions">Předplatná v App Store</a>
+      </li>
+      <li>
+        <a href="https://play.google.com/store/account/subscriptions">Předplatná v Google Play</a>
+      </li>
+    </ul>
+    <h2>Co napsat do zprávy</h2>
+    <p>
+      Pomůže model zařízení, verze systému a aplikace a stručný popis problému. Neposílejte údaje o
+      platební kartě ani osobní informace o dítěti. Pokud potřebujeme dohledat konkrétní nákup,
+      domluvíme se na nezbytných údajích v odpovědi.
+    </p>
+    <h2>Pro iPhone, iPad a Android</h2>
+    <p>
+      Hrátkov pro tyto platformy připravujeme. Odkazy na stažení zveřejníme na{' '}
+      <a href="/">úvodní stránce</a>, až bude aplikace dostupná v obchodech.
+    </p>
+    <p>
+      <a href="/soukromi/#cs">Zásady soukromí</a> · <a href="/podminky/">Podmínky použití</a>
+    </p>
+  </article>
+</SiteLayout>

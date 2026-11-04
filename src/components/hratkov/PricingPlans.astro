@@ -1,0 +1,56 @@
+---
+import { games } from '../../data/games';
+
+const plans = [
+  {
+    name: 'Základ',
+    price: 'Zdarma',
+    period: 'bez předplatného',
+    description: 'Tři hry na první malé objevy.',
+    features: games.filter((game) => game.free).map((game) => game.title),
+    href: '#hry',
+    action: 'Prohlédnout hry zdarma',
+    plus: false,
+  },
+  {
+    name: 'Hrátkov Plus',
+    price: '60 Kč',
+    period: '/ měsíc',
+    description: 'Všech dvanáct her v jednom malém světě.',
+    features: [
+      'Všechny tři hry ze Základu',
+      'Dalších devět her včetně dinosaurů',
+      'Zvířátka, kreslení, tvary i počítání',
+    ],
+    href: '#dostupnost',
+    action: 'Kdy si budeme hrát?',
+    plus: true,
+  },
+];
+---
+
+<div class="h-pricing-grid">
+  {plans.map((plan) => (
+    <article class:list={['h-price-card', { 'h-price-plus': plan.plus }]}>
+      {plan.plus && <span class="h-plus-tag">Ještě víc objevování</span>}
+      <span class="h-plan-name">{plan.name}</span>
+      <h3>
+        {plan.price}
+        <span>{plan.period}</span>
+      </h3>
+      <p>{plan.description}</p>
+      <ul>
+        {plan.features.map((feature) => (
+          <li>{feature}</li>
+        ))}
+      </ul>
+      <a
+        class:list={['h-button', plan.plus ? 'h-button-primary' : 'h-button-secondary']}
+        href={plan.href}
+        data-games-filter={plan.plus ? undefined : 'free'}
+      >
+        {plan.action} <span aria-hidden="true">↗</span>
+      </a>
+    </article>
+  ))}
+</div>
