@@ -15,10 +15,16 @@ export const privacy: readonly PrivacyLanguage[] = [
   {
     id: 'en',
     title: 'Privacy policy',
-    updated: 'Last updated: 30 October 2026',
+    updated: 'Last updated: 4 November 2026',
     summary:
       'Child settings and game activity stay on the device. Optional subscriptions use RevenueCat to verify purchases and restore access. The app has no advertising, advertising tracking, or game-activity analytics.',
     sections: [
+      {
+        heading: 'Current test versions and local voices',
+        paragraphs: [
+          'Current test builds have paid subscriptions disabled. They do not initialise RevenueCat or send it requests. The RevenueCat sections below describe the planned version with subscriptions. Czech, Slovak and English have bundled recordings; other languages use an available local system voice. The app does not request remote speech synthesis or download voice data. If a suitable voice is unavailable, prompts stay on screen without speech.',
+        ],
+      },
       {
         heading: 'Who operates Hrátkov',
         paragraphs: [
@@ -44,7 +50,7 @@ export const privacy: readonly PrivacyLanguage[] = [
         heading: 'When the app connects to the internet',
         paragraphs: [
           'Images, fonts, sounds, and voice recordings are bundled with the app. Subscription checks and offer loading may connect to RevenueCat when the app starts, returns to the foreground, or an entitlement expires. Purchase and restore actions also require a connection. These checks can happen without opening the parent section.',
-          'Purchases, settings, and external links are accessed through the parent section behind a hold-to-enter gate. External websites have their own privacy practices. Offline access to paid games depends on previously verified, unexpired subscription information cached by the SDK.',
+          'Purchases, settings, and external links are accessed through the parent section behind a arithmetic parental gate. External websites have their own privacy practices. Offline access to paid games depends on previously verified, unexpired subscription information cached by the SDK.',
         ],
       },
       {
@@ -74,10 +80,16 @@ export const privacy: readonly PrivacyLanguage[] = [
   {
     id: 'cs',
     title: 'Zásady ochrany soukromí',
-    updated: 'Poslední aktualizace: 30. října 2026',
+    updated: 'Poslední aktualizace: 4. listopadu 2026',
     summary:
       'Nastavení dítěte a průběh hraní zůstávají v zařízení. Volitelné předplatné ověřujeme přes RevenueCat, abychom mohli odemknout a obnovit placené hry. Aplikace neobsahuje reklamy, reklamní sledování ani analytiku hraní.',
     sections: [
+      {
+        heading: 'Současné testovací verze a místní hlasy',
+        paragraphs: [
+          'Současné testovací buildy mají placené předplatné vypnuté. RevenueCat neinicializují a neposílají mu požadavky. Níže uvedený popis RevenueCat se týká připravované verze s předplatným. Čeština, slovenština a angličtina mají přibalené nahrávky; ostatní jazyky používají dostupný místní systémový hlas. Aplikace nevyžaduje vzdálenou syntézu řeči ani stahování hlasových dat. Pokud vhodný hlas chybí, zadání zůstává na obrazovce bez hlasu.',
+        ],
+      },
       {
         heading: 'Kdo provozuje Hrátkov',
         paragraphs: [
@@ -103,7 +115,7 @@ export const privacy: readonly PrivacyLanguage[] = [
         heading: 'Kdy se aplikace připojuje k internetu',
         paragraphs: [
           'Obrázky, písma, zvuky a nahrávky jsou součástí aplikace. Ověření předplatného a načtení nabídky může komunikovat s RevenueCat při spuštění, návratu aplikace do popředí a skončení platnosti oprávnění. Připojení vyžaduje také nákup a obnovení nákupů. Ověřování může probíhat i bez otevření rodičovské sekce.',
-          'Nákupy, nastavení a externí odkazy jsou dostupné v rodičovské sekci za bránou s podržením tlačítka. Otevřené weby mají vlastní zásady soukromí. Placené hry jsou offline dostupné podle dříve ověřeného a dosud platného oprávnění uloženého v mezipaměti SDK.',
+          'Nákupy, nastavení a externí odkazy jsou dostupné v rodičovské sekci za rodičovskou početní bránou. Otevřené weby mají vlastní zásady soukromí. Placené hry jsou offline dostupné podle dříve ověřeného a dosud platného oprávnění uloženého v mezipaměti SDK.',
         ],
       },
       {
@@ -133,10 +145,16 @@ export const privacy: readonly PrivacyLanguage[] = [
   {
     id: 'sk',
     title: 'Zásady ochrany súkromia',
-    updated: 'Posledná aktualizácia: 30. októbra 2026',
+    updated: 'Posledná aktualizácia: 4. novembra 2026',
     summary:
       'Nastavenia dieťaťa a priebeh hrania zostávajú v zariadení. Voliteľné predplatné overujeme cez RevenueCat, aby sme mohli odomknúť a obnoviť platené hry. Aplikácia neobsahuje reklamy, reklamné sledovanie ani analytiku hrania.',
     sections: [
+      {
+        heading: 'Súčasné testovacie verzie a miestne hlasy',
+        paragraphs: [
+          'Súčasné testovacie buildy majú platené predplatné vypnuté. RevenueCat neinicializujú a neposielajú mu požiadavky. Nižšie uvedený opis RevenueCat sa týka pripravovanej verzie s predplatným. Čeština, slovenčina a angličtina majú pribalené nahrávky; ostatné jazyky používajú dostupný miestny systémový hlas. Aplikácia nevyžaduje vzdialenú syntézu reči ani sťahovanie hlasových dát. Ak vhodný hlas chýba, zadanie zostáva na obrazovke bez hlasu.',
+        ],
+      },
       {
         heading: 'Kto prevádzkuje Hrátkov',
         paragraphs: [
@@ -162,7 +180,7 @@ export const privacy: readonly PrivacyLanguage[] = [
         heading: 'Kedy sa aplikácia pripája na internet',
         paragraphs: [
           'Obrázky, písma, zvuky a nahrávky sú súčasťou aplikácie. Overenie predplatného a načítanie ponuky môže komunikovať s RevenueCat pri spustení, návrate aplikácie do popredia a skončení platnosti oprávnenia. Pripojenie vyžaduje aj nákup a obnovenie nákupov. Overovanie môže prebiehať aj bez otvorenia rodičovskej sekcie.',
-          'Nákupy, nastavenia a externé odkazy sú dostupné v rodičovskej sekcii za bránou s podržaním tlačidla. Otvorené weby majú vlastné zásady súkromia. Platené hry sú offline dostupné podľa skôr overeného a stále platného oprávnenia uloženého v pamäti SDK.',
+          'Nákupy, nastavenia a externé odkazy sú dostupné v rodičovskej sekcii za rodičovskou početnou bránou. Otvorené weby majú vlastné zásady súkromia. Platené hry sú offline dostupné podľa skôr overeného a stále platného oprávnenia uloženého v pamäti SDK.',
         ],
       },
       {

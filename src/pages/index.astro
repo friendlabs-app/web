@@ -5,6 +5,10 @@ import GameDemo from '../components/hratkov/GameDemo.astro';
 import PricingPlans from '../components/hratkov/PricingPlans.astro';
 const faqs = [
   [
+    'Jaké jazyky aplikace nabízí?',
+    'Češtinu, slovenštinu, angličtinu, němčinu, španělštinu, francouzštinu, portugalštinu a polštinu. U pěti nových jazyků závisí hlasový průvodce na dostupnosti místního hlasu v zařízení; zadání zůstává vždy na obrazovce.',
+  ],
+  [
     'Pro jak staré děti je Hrátkov?',
     'Pro děti přibližně od 2 do 5 let. Podle zvoleného věku aplikace upraví počet možností, délku některých kol a složitost omalovánek. Na začátku doporučujeme hrát společně.',
   ],
@@ -14,11 +18,11 @@ const faqs = [
   ],
   [
     'Potřebujeme připojení k internetu?',
-    'Obrázky, zvuky, hlasy a písma jsou součástí aplikace. Předplatné ověřuje RevenueCat při spuštění a návratu do aplikace; nákup a obnovení potřebují internet. Dostupnost placených her offline se řídí dříve ověřeným oprávněním a jeho platností.',
+    'Obrázky, zvuky a písma jsou součástí aplikace. Čeština, slovenština a angličtina mají přibalené nahrávky; další jazyky používají místní hlas zařízení, pokud je nainstalovaný. V aktuálních testovacích verzích je předplatné vypnuté. V budoucí verzi s nákupy bude ověření, nákup a obnovení potřebovat internet. Dostupnost placených her offline se řídí dříve ověřeným oprávněním a jeho platností.',
   ],
   [
     'Může dítě něco koupit samo?',
-    'Vstup k nákupům je za rodičovskou bránou s podržením tlačítka. Samotnou platbu potvrzuje rodič prostřednictvím App Store nebo Google Play podle nastavení svého zařízení.',
+    'Vstup k nákupům je za rodičovskou bránou s početním příkladem. Samotnou platbu potvrzuje rodič prostřednictvím App Store nebo Google Play podle nastavení svého zařízení.',
   ],
   [
     'Jak se předplatné ruší?',
@@ -35,7 +39,7 @@ const faqs = [
   <section class="h-hero" aria-labelledby="hero-title">
     <div class="h-hero-copy">
       <span class="h-eyebrow">
-        <span class="h-dot" aria-hidden="true"></span> Hrajeme si. Objevujeme. Rosteme.
+        <span class="h-dot" aria-hidden="true"></span> Hrajeme si. Tvoříme. Objevujeme.
       </span>
       <h1 id="hero-title">
         Malé ruce.
@@ -71,7 +75,7 @@ const faqs = [
       <i aria-hidden="true">◷</i> Vlastním tempem
     </span>
     <span>
-      <i aria-hidden="true">✦</i> CZ · SK · EN
+      <i aria-hidden="true">✦</i> 8 jazyků
     </span>
     <span>
       <i aria-hidden="true">⌂</i> Bez registrace
@@ -126,7 +130,9 @@ const faqs = [
         </li>
         <li>
           <strong>Obrázky na dva způsoby.</strong>
-          <span>Pohádková zvířátka i skutečné fotografie ve hrách, které oba styly podporují.</span>
+          <span>
+            Pohádkové i realistické generované ilustrace ve hrách, které oba styly podporují.
+          </span>
         </li>
         <li>
           <strong>Nákupy řeší rodiče.</strong>
