@@ -20,7 +20,7 @@ npm run preview
 
 ## Stránky a obsah
 
-- `/` — Hrátkov, hratelná ochutnávka, filtrovaný katalog 12 her a ceník.
+- `/` — Hrátkov, hratelná ochutnávka, filtrovaný katalog 13 her a ceník.
 - `/podpora/` — česká podpora, obnovení nákupů a správa předplatného.
 - `/soukromi/` — zásady aplikace v CZ/SK/EN; kotvy `#cs`, `#sk`, `#en`.
 - `/soukromi/web/` — zásady samotného webu.
@@ -28,11 +28,11 @@ npm run preview
 - `/sitemap.xml`, `/robots.txt` — adresy finální domény pro vyhledávače.
 - `404.html` — skutečná chybová stránka bez indexování.
 
-Aplikace připravuje osm jazyků (CZ, SK, EN, DE, ES, FR, PT, PL). Nové jazyky
-používají dostupný místní hlas zařízení; právní stránky jsou v CZ/SK/EN.
+Aplikace nabízí osm jazyků (CZ, SK, EN, DE, ES, FR, PT-BR, PL), všechny
+s přibalenými nahrávkami; právní stránky jsou v CZ/SK/EN.
 
-Základ obsahuje tři hry zdarma. Hrátkov Plus obsahuje všech 12 her za
-plánovaných 60 Kč měsíčně při vydání v Česku. Cena se potvrzuje v obchodě;
+Základ obsahuje tři hry zdarma. Měsíční Hrátkov Plus obsahuje všech 13 her;
+piškvorky se zobrazují od čtyř let. Konečnou cenu dodává obchod;
 web neprovádí nákupy. Odkazy na stažení přibudou až po vydání aplikace.
 
 Obrázky, písma a předlohy v `public/hratkov/` pocházejí z aplikace. Web nemá

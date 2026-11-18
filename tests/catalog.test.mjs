@@ -3,21 +3,21 @@ import { test } from 'node:test';
 import { games } from '../src/data/games.ts';
 import { getCatalogPage } from '../src/lib/catalog.ts';
 
-test('all twelve games can be reached once across the catalog pages', () => {
+test('all thirteen games can be reached once across the catalog pages', () => {
   const ids = [];
   const first = getCatalogPage('all');
   for (let page = 0; page < first.pageCount; page += 1) {
     const state = getCatalogPage('all', page);
     ids.push(...state.items.map((game) => game.id));
-    assert.equal(state.items.length, 4);
+    assert.equal(state.items.length, Math.min(4, games.length - page * 4));
     assert.equal(state.first, page * 4 + 1);
-    assert.equal(state.last, (page + 1) * 4);
+    assert.equal(state.last, Math.min(games.length, (page + 1) * 4));
   }
   assert.deepEqual(
     ids,
     games.map((game) => game.id),
   );
-  assert.equal(new Set(ids).size, 12);
+  assert.equal(new Set(ids).size, 13);
 });
 
 test('free games match the actual free tier, without including paid games', () => {
