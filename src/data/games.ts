@@ -105,4 +105,12 @@ export const games: readonly Game[] = [
     image: '/hratkov/animals/duckling.webp',
     free: false,
   },
+  {
+    id: 'tictactoe',
+    title: 'Piškvorky',
+    detail: 'Od čtyř let. Ve dvou nebo proti soupeři.',
+    category: 'create',
+    image: '/hratkov/games/tictactoe.webp',
+    free: false,
+  },
 ];

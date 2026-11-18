@@ -15,14 +15,14 @@ export const privacy: readonly PrivacyLanguage[] = [
   {
     id: 'en',
     title: 'Privacy policy',
-    updated: 'Last updated: 4 November 2026',
+    updated: 'Last updated: 18 November 2026',
     summary:
       'Child settings and game activity stay on the device. Optional subscriptions use RevenueCat to verify purchases and restore access. The app has no advertising, advertising tracking, or game-activity analytics.',
     sections: [
       {
-        heading: 'Current test versions and local voices',
+        heading: 'Current test versions and bundled recordings',
         paragraphs: [
-          'Current test builds have paid subscriptions disabled. They do not initialise RevenueCat or send it requests. The RevenueCat sections below describe the planned version with subscriptions. Czech, Slovak and English have bundled recordings; other languages use an available local system voice. The app does not request remote speech synthesis or download voice data. If a suitable voice is unavailable, prompts stay on screen without speech.',
+          'Current test builds have paid subscriptions disabled. They do not initialise RevenueCat or send it requests. The RevenueCat sections below describe the planned version with subscriptions. All eight supported languages have bundled voice recordings, including Brazilian Portuguese. Playing them requires neither an internet connection nor downloading system voices.',
         ],
       },
       {
@@ -80,14 +80,14 @@ export const privacy: readonly PrivacyLanguage[] = [
   {
     id: 'cs',
     title: 'Zásady ochrany soukromí',
-    updated: 'Poslední aktualizace: 4. listopadu 2026',
+    updated: 'Poslední aktualizace: 18. listopadu 2026',
     summary:
       'Nastavení dítěte a průběh hraní zůstávají v zařízení. Volitelné předplatné ověřujeme přes RevenueCat, abychom mohli odemknout a obnovit placené hry. Aplikace neobsahuje reklamy, reklamní sledování ani analytiku hraní.',
     sections: [
       {
-        heading: 'Současné testovací verze a místní hlasy',
+        heading: 'Současné testovací verze a přibalené nahrávky',
         paragraphs: [
-          'Současné testovací buildy mají placené předplatné vypnuté. RevenueCat neinicializují a neposílají mu požadavky. Níže uvedený popis RevenueCat se týká připravované verze s předplatným. Čeština, slovenština a angličtina mají přibalené nahrávky; ostatní jazyky používají dostupný místní systémový hlas. Aplikace nevyžaduje vzdálenou syntézu řeči ani stahování hlasových dat. Pokud vhodný hlas chybí, zadání zůstává na obrazovce bez hlasu.',
+          'Současné testovací buildy mají placené předplatné vypnuté. RevenueCat neinicializují a neposílají mu požadavky. Níže uvedený popis RevenueCat se týká připravované verze s předplatným. Všech osm podporovaných jazyků má přibalené hlasové nahrávky, včetně brazilské portugalštiny. Jejich přehrávání nevyžaduje internet ani stahování systémových hlasů.',
         ],
       },
       {
@@ -145,14 +145,14 @@ export const privacy: readonly PrivacyLanguage[] = [
   {
     id: 'sk',
     title: 'Zásady ochrany súkromia',
-    updated: 'Posledná aktualizácia: 4. novembra 2026',
+    updated: 'Posledná aktualizácia: 18. novembra 2026',
     summary:
       'Nastavenia dieťaťa a priebeh hrania zostávajú v zariadení. Voliteľné predplatné overujeme cez RevenueCat, aby sme mohli odomknúť a obnoviť platené hry. Aplikácia neobsahuje reklamy, reklamné sledovanie ani analytiku hrania.',
     sections: [
       {
-        heading: 'Súčasné testovacie verzie a miestne hlasy',
+        heading: 'Súčasné testovacie verzie a pribalené nahrávky',
         paragraphs: [
-          'Súčasné testovacie buildy majú platené predplatné vypnuté. RevenueCat neinicializujú a neposielajú mu požiadavky. Nižšie uvedený opis RevenueCat sa týka pripravovanej verzie s predplatným. Čeština, slovenčina a angličtina majú pribalené nahrávky; ostatné jazyky používajú dostupný miestny systémový hlas. Aplikácia nevyžaduje vzdialenú syntézu reči ani sťahovanie hlasových dát. Ak vhodný hlas chýba, zadanie zostáva na obrazovke bez hlasu.',
+          'Súčasné testovacie buildy majú platené predplatné vypnuté. RevenueCat neinicializujú a neposielajú mu požiadavky. Nižšie uvedený opis RevenueCat sa týka pripravovanej verzie s predplatným. Všetkých osem podporovaných jazykov má pribalené hlasové nahrávky vrátane brazílskej portugalčiny. Ich prehrávanie nevyžaduje internet ani sťahovanie systémových hlasov.',
         ],
       },
       {
