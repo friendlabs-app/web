@@ -1,0 +1,219 @@
+:root {
+  --site-header-offset: calc(3rem + 48px);
+  --bg: #fbfaf7;
+  --text: #17171b;
+  --muted: #63636b;
+  --accent: #4f6df5;
+  --accent-2: #ff8a5c;
+  --card: #ffffff;
+  --border: #e8e6df;
+  --glow-opacity: 0.14;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101014;
+    --text: #f4f3f0;
+    --muted: #9d9da6;
+    --accent: #8298ff;
+    --accent-2: #ff9a70;
+    --card: #1a1a20;
+    --border: #2b2b33;
+    --glow-opacity: 0.22;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scrollbar-gutter: stable;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family:
+    'Space Grotesk',
+    'Inter',
+    -apple-system,
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* layout */
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* content pages */
+.page {
+  padding: 32px 0 56px;
+  max-width: 44rem;
+}
+
+.page h1 {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  margin-bottom: 8px;
+}
+
+.page h2 {
+  font-size: 1.25rem;
+  margin-top: 36px;
+}
+
+.page p,
+.page li {
+  color: var(--text);
+}
+
+.page .updated {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* footer */
+.site-footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 24px 40px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+.site-footer a {
+  color: var(--muted);
+}
+
+/* Shared accessibility and privacy pages. */
+:focus-visible {
+  outline: 3px solid #4264e8;
+  outline-offset: 5px;
+}
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 100;
+  padding: 10px 18px;
+  background: white;
+  color: #302b4b;
+  border: 2px solid #4264e8;
+  border-radius: 10px;
+}
+.skip-link:focus {
+  top: 10px;
+}
+#main:focus {
+  outline: none;
+}
+.page h3 {
+  margin-top: 28px;
+  font-size: 1.05rem;
+}
+.policy-language {
+  padding: 30px 0;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: var(--site-header-offset);
+}
+.policy-language > h2 {
+  font-size: 1.6rem;
+}
+.policy-summary {
+  background: var(--card);
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+.policy-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+.page p,
+.page li {
+  overflow-wrap: anywhere;
+}
+
+.content-main {
+  max-width: 1256px;
+  padding: 42px 24px 64px;
+}
+.content-main > .page {
+  margin-inline: auto;
+  max-width: 760px;
+}
+.hratkov-site .content-main h1 {
+  font-size: clamp(2.25rem, 5vw, 3.4rem);
+  line-height: 1.15;
+  margin: 0 0 24px;
+}
+.hratkov-site .content-main h2 {
+  font-size: 1.65rem;
+  line-height: 1.25;
+}
+.hratkov-site .content-main h3 {
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+.hratkov-site .content-main {
+  overflow-wrap: anywhere;
+}
+.hratkov-site .site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+}
+.hratkov-site .site-footer nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.hratkov-site .site-footer p {
+  margin: 14px 0 0;
+  font-size: 0.8rem;
+}
+.policy-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+@media (max-width: 560px) {
+  :root {
+    --site-header-offset: calc(4.5rem + 72px);
+  }
+  .content-main {
+    padding: 30px 20px 48px;
+  }
+}

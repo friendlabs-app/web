@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 374">
+  <!-- Butterfly geometry from Hrátkov app/lib/data/canvas_data.dart. -->
+  <rect width="440" height="374" fill="#fff1de"/>
+  <rect x="40" y="18" width="360" height="312" rx="22" fill="#fff"/>
+  <g transform="translate(70 28)" stroke="#49405c" stroke-width="4" stroke-linejoin="round">
+    <ellipse cx="85" cy="98" rx="66" ry="56" fill="#91d9f4"/>
+    <ellipse cx="215" cy="98" rx="66" ry="56" fill="#fff"/>
+    <ellipse cx="92" cy="200" rx="56" ry="48" fill="#b7ead6"/>
+    <ellipse cx="208" cy="200" rx="56" ry="48" fill="#fff"/>
+    <ellipse cx="150" cy="150" rx="26" ry="80" fill="#ffe58f"/>
+    <circle cx="150" cy="55" r="28" fill="#ffe58f"/>
+    <path d="M138 34Q128 10 116 8M162 34Q172 10 184 8M141 64Q150 71 159 64" fill="none" stroke-linecap="round"/>
+    <g fill="#49405c" stroke="none"><circle cx="140" cy="50" r="4"/><circle cx="160" cy="50" r="4"/></g>
+  </g>
+  <circle cx="148" cy="350" r="10" fill="#91d9f4"/>
+  <circle cx="184" cy="350" r="10" fill="#b7ead6"/>
+  <circle cx="220" cy="350" r="10" fill="#ffe58f"/>
+  <circle cx="256" cy="350" r="10" fill="#fa896b"/>
+  <circle cx="292" cy="350" r="10" fill="#b6a1e9"/>
+</svg>

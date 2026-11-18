@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 374">
+  <!-- Sunshine drawing template from Hrátkov app/lib/data/canvas_data.dart. -->
+  <rect width="440" height="374" fill="#eaf3ff"/>
+  <rect x="40" y="18" width="360" height="312" rx="22" fill="#fff"/>
+  <g transform="translate(80 6)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#b5c5dc" stroke-width="6" stroke-dasharray="2 13">
+      <circle cx="140" cy="150" r="62"/>
+      <path d="M222 150H252M58 150H28M140 68V38M140 232V262M198 92L219 71M82 208L61 229M198 208L219 229M82 92L61 71"/>
+    </g>
+    <path d="M140 88A62 62 0 1 0 202 150M58 150H28M82 208L61 229M140 232V262" stroke="#4264e8" stroke-width="12"/>
+  </g>
+  <g transform="translate(317 228) rotate(35)">
+    <rect width="20" height="78" rx="5" fill="#fa896b"/>
+    <path d="M0 75H20L10 98Z" fill="#e2bb89"/>
+    <path d="M6 90H14L10 98Z" fill="#49405c"/>
+  </g>
+  <circle cx="166" cy="350" r="10" fill="#4264e8"/>
+  <circle cx="202" cy="350" r="10" fill="#b7ead6"/>
+  <circle cx="238" cy="350" r="10" fill="#ffe58f"/>
+  <circle cx="274" cy="350" r="10" fill="#fa896b"/>
+</svg>

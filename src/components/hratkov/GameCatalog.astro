@@ -1,0 +1,81 @@
+---
+import { games } from '../../data/games';
+import { gameFilters, getCatalogPage } from '../../lib/catalog';
+const initialPage = getCatalogPage('all');
+---
+
+<div class="h-catalog" data-catalog>
+  <div class="h-filters h-catalog-controls" role="group" aria-label="Filtrovat hry">
+    {gameFilters.map((filter) => (
+      <button
+        type="button"
+        data-filter={filter.id}
+        aria-pressed={filter.id === 'all'}
+        aria-controls="game-catalog-grid"
+      >
+        {filter.label}
+        <span aria-hidden="true">{getCatalogPage(filter.id).total}</span>
+      </button>
+    ))}
+  </div>
+  <div class="h-game-grid" id="game-catalog-grid">
+    {games.map((game, index) => (
+      <article class="h-game" data-game-id={game.id} hidden={index >= initialPage.items.length}>
+        <div class:list={['h-game-image', `h-game-image-${game.category}`]}>
+          <img
+            src={game.image}
+            alt={`Ukázka hry ${game.title}`}
+            width="440"
+            height="440"
+            loading="eager"
+            fetchpriority="low"
+          />
+          <span class:list={['h-game-label', { 'h-game-label-free': game.free }]}>
+            {game.free ? 'Zdarma' : 'Plus'}
+          </span>
+        </div>
+        <div class="h-game-copy">
+          <h3>{game.title}</h3>
+          <p>{game.detail}</p>
+        </div>
+      </article>
+    ))}
+    <aside class="h-catalog-more" data-catalog-more hidden>
+      <p>Co objevit ještě něco dalšího?</p>
+      <button type="button" data-filter-reset>
+        Všechny hry <span aria-hidden="true">→</span>
+      </button>
+    </aside>
+  </div>
+  <div class="h-catalog-pagination h-catalog-controls">
+    <button
+      type="button"
+      data-page-previous
+      aria-label="Předchozí hry"
+      aria-controls="game-catalog-grid"
+      aria-disabled="true"
+    >
+      <span aria-hidden="true">←</span> Zpět
+    </button>
+    <p data-catalog-status role="status">
+      {initialPage.first}–{initialPage.last} z {initialPage.total} her
+    </p>
+    <button
+      type="button"
+      data-page-next
+      aria-label="Další hry"
+      aria-controls="game-catalog-grid"
+      aria-disabled="false"
+    >
+      Další hry <span aria-hidden="true">→</span>
+    </button>
+  </div>
+</div>
+<noscript>
+  <link rel="stylesheet" href="/hratkov/no-script.css" />
+</noscript>
+
+<script>
+  import { initGameCatalog } from '../../scripts/game-catalog';
+  document.querySelectorAll<HTMLElement>('[data-catalog]').forEach(initGameCatalog);
+</script>
